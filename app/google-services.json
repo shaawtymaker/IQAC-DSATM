@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "807554648794",
+    "project_id": "iqac-1e33b",
+    "storage_bucket": "iqac-1e33b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807554648794:android:cb27170b13f2c52b46b3e3",
+        "android_client_info": {
+          "package_name": "com.loyaladmin.navigationdrawer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU6LaxCv_rIRl_VK_eM_2-3JnCP2-Sqr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

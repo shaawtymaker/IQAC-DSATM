@@ -1,0 +1,79 @@
+gradle
+// Use the new plugin ID for application
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    // Update to a more recent API level. API 33 or 34 is recommended.
+    compileSdkVersion 34
+    namespace 'info.androidhive.navigationdrawer' // This is correct
+
+    defaultConfig {
+        applicationId "com.loyaladmin.navigationdrawer"
+        minSdkVersion 23
+        // Target SDK should ideally match compile SDK
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
+        // The test runner also needs to be updated to AndroidX
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/LICENSE', 'META-INF/LICENSE-FIREBASE.txt', 'META-INF/NOTICE']
+        }
+    }
+
+    // This is needed if you are updating to AGP 7.0+
+    // For AGP 4.2.0, this can stay as is.
+
+    // Add compileOptions to ensure Java 8 compatibility, which is needed by many modern libraries
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    namespace 'info.androidhive.navigationdrawer'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // ✅ REPLACED: Old Support Libs -> New AndroidX Libs
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0' // Replaces 'design'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0' // Replaces 'support-v4'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // Testing
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Image Libraries
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Firebase (Keep this as is)
+    implementation platform('com.google.firebase:firebase-bom:33.6.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-storage'
+
+    // Other External Libraries
+    implementation 'com.sendbird.sdk:sendbird-android-sdk:3.0.92'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.29'
+    implementation "com.github.varunest:sparkbutton:1.0.5"
+    implementation 'androidx.emoji:emoji-bundled:1.1.0'
+}
+    
